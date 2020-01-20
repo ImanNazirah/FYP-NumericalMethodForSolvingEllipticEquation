@@ -111,9 +111,9 @@ xj = xsolve;
 xg = xsolve;
 xs = xsolve;
 
-L =tril(-A,-1);         %untuk hasilkan triangular(figure out why (-A,-1)
-D = diag(diag(A));      %untuk hasilkan diagonal A. diag(diag(A)) untuk keluar bentuk
-U = triu(-A,1);         %untuk hasilkan triangular(figure out why (-A,1)
+L =tril(-A,-1);         %triangular
+D = diag(diag(A));      %diagonal A
+U = triu(-A,1);         % triangular
 
 Tj = inv(D)*(L+U);       % hampir sama dengan T = inv(D)*(A-D) except -+
 Cj = inv(D)*b;
@@ -127,13 +127,13 @@ rho_Ts = max(abs(eig(Ts)));
 %w=0.25;
 Tw = inv(D-w*L)*((1-w)*D+w*U);
 Cw = w*(inv(D-w*L))*b;
-delta = 1e-5;          %mesti ada bila buat tolerance
+delta = 1e-5;        
 N=10000000000000;
   %utk simpan tolerance
 % jc=1;
 % tic %mesti ada bila buat while
 % while jc<=N              %N is the iteration
-%     xj(:,jc+1)=Tj*xj(:,jc)+Cj;     %%figure out kan mana dapat formula
+%     xj(:,jc+1)=Tj*xj(:,jc)+Cj;   
 %     %tolerance
 % %     tolerancej = norm(xj(:,jc+1)-xj(:,jc),inf)/norm(xj(:,jc+1),inf);
 %    tolerancej = norm(xj(:,jc+1)-xj(:,jc),inf);
@@ -155,7 +155,7 @@ while g<=N              %N is the iteration
     if toleranceg<delta
         break
     end
-    g=g+1;              %mesti ada bila buat while
+    g=g+1;            
 %     fprintf('n=%g toleranceg=%g\n',g,toleranceg)
 end
 toc
