@@ -104,11 +104,11 @@ xj = xsolve;
 xg = xsolve;
 xs = xsolve;
 
-L =tril(-A,-1);         %untuk hasilkan triangular(figure out why (-A,-1)
-D = diag(diag(A));      %untuk hasilkan diagonal A. diag(diag(A)) untuk keluar bentuk
-U = triu(-A,1);         %untuk hasilkan triangular(figure out why (-A,1)
+L =tril(-A,-1);         %triangular
+D = diag(diag(A));      %diagonal A. diag(diag(A))
+U = triu(-A,1);         %u triangular
 
-Tj = inv(D)*(L+U);       % hampir sama dengan T = inv(D)*(A-D) except -+
+Tj = inv(D)*(L+U);       %sama dengan T = inv(D)*(A-D) except -+
 Cj = inv(D)*b;
 Tg = inv(D-L)*(U);
 Cg = inv(D-L)*b;
@@ -125,14 +125,14 @@ dj=zeros(21,1);  %utk simpan tolerance
 jc=1;
 tic %mesti ada bila buat while
 while jc<=N              %N is the iteration
-    xj(:,jc+1)=Tj*xj(:,jc)+Cj;     %%figure out kan mana dapat formula
+    xj(:,jc+1)=Tj*xj(:,jc)+Cj;     
     %tolerance
 %     tolerancej = norm(xj(:,jc+1)-xj(:,jc),inf)/norm(xj(:,jc+1),inf);
    tolerancej = norm(xj(:,jc+1)-xj(:,jc),inf)
     if tolerancej<delta
         break
     end
-     jc=jc+1;              %mesti ada bila buat while
+     jc=jc+1;              
      %fprintf('n=%g tolerancej=%g\n',jc,tolerancej)
 end
 toc
@@ -147,7 +147,7 @@ while g<=N              %N is the iteration
     if toleranceg<delta
         break
     end
-    g=g+1;              %mesti ada bila buat while
+    g=g+1;              
     %fprintf('n=%g toleranceg=%g\n',g,toleranceg)
 end
 toc
@@ -212,7 +212,6 @@ ic;
 % %%
 
 %%
-% PREConjugate (pemahaman iman,tapi iteration sikit tak jadi )
 %ni: number of iteration
 x0 = zeros(n*m,1); %zeros x0 M*N
 conditionalA=cond(A,Inf);
@@ -252,7 +251,7 @@ xp = xp(:,(ip+1))
 ip
 %%
 %Preconditioned Conjugate Gradient
-%coding orang
+
 x0=zeros(n*m,1);	
 u = x0;
 r = b - A * u;
